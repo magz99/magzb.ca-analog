@@ -4,7 +4,8 @@
       "inlineStyle": true
     },
     "angular-component": {
-      "skipDisplayBlock": true
+      "skipDisplayBlock": true,
+      "skipPathSubfolder": true
     }
   }
 }
