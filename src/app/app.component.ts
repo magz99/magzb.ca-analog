@@ -1,39 +1,20 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './components/header.component';
+import { FooterComponent } from './components/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   template: `
     <main class="mat-app-background light-theme">
-      <nav class="flex space-x-4">
-        <a href="/">Home</a>
-        <!-- <a href="/blog">Blog</a> -->
-        <a href="/about">About</a>
-        <a href="/resume">Resume</a>
-      </nav>
-      <div class="content-wrapper">
+      <app-header class="w-full mx-auto max-w-screen-xl" />
+      <div class="w-full mx-auto min-h-screen max-w-screen-xl p-10 my-0 ">
         <router-outlet></router-outlet>
       </div>
-      <footer>©2024 Magz Bautista-Lee</footer>
+      <app-footer />
     </main>
   `,
-  styles: [
-    `
-      :host .content-wrapper {
-        max-width: 1400px;
-        padding: 2rem;
-        margin: 0 auto;
-        min-height: 100vh;
-        display: block;
-      }
-
-      nav {
-        //text-align: left;
-        padding: 0 0 2rem 0;
-      }
-    `,
-  ],
 })
 export class AppComponent {}
