@@ -1,10 +1,9 @@
-
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-    selector: 'app-header',
-    imports: [],
-    template: `
+  selector: 'app-header',
+  standalone: true,
+  template: `
     <nav class="flex sm:px-5 lg:px-6 justify-between py-6">
       <ul class="flex">
         <li class="flex items-center">
@@ -25,6 +24,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </ul> -->
     </nav>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {}
