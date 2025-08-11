@@ -4,10 +4,9 @@ import PostAttributes from '../../post-attributes';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-blog',
-  standalone: true,
-  imports: [RouterLink],
-  template: `
+    selector: 'app-blog',
+    imports: [RouterLink],
+    template: `
     <h1>Blog Archive</h1>
     @for (post of posts;track post.attributes.slug) {
     <a [routerLink]="['/blog/', post.attributes.slug]">
@@ -16,8 +15,8 @@ import { RouterLink } from '@angular/router';
     </a>
     }
   `,
-  styles: [
-    `
+    styles: [
+        `
       a {
         text-align: left;
         display: block;
@@ -29,7 +28,7 @@ import { RouterLink } from '@angular/router';
         margin: 0;
       }
     `,
-  ],
+    ]
 })
 export default class BlogComponent {
   readonly posts = injectContentFiles<PostAttributes>();

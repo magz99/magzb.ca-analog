@@ -5,10 +5,9 @@ import { AsyncPipe } from '@angular/common';
 import PostAttributes from '../../post-attributes';
 
 @Component({
-  selector: 'app-blog-post',
-  standalone: true,
-  imports: [AsyncPipe, MarkdownComponent],
-  template: `
+    selector: 'app-blog-post',
+    imports: [AsyncPipe, MarkdownComponent],
+    template: `
     @if (post$ | async; as post) {
     <article>
       <img class="post__image" [src]="post.attributes.coverImage" />
@@ -16,13 +15,13 @@ import PostAttributes from '../../post-attributes';
     </article>
     }
   `,
-  styles: [
-    `
+    styles: [
+        `
       .post__image {
         max-height: 40vh;
       }
     `,
-  ],
+    ]
 })
 export default class BlogPostComponent {
   readonly post$ = injectContent<PostAttributes>('slug');
