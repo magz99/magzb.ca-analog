@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'app-header',
-    imports: [CommonModule],
+    imports: [],
     template: `
     <nav class="flex sm:px-5 lg:px-6 justify-between py-6">
       <ul class="flex">
