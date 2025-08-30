@@ -2,7 +2,7 @@
 title: Generalist By Birth
 slug: 2025-08-15-generalist-by-birth
 description: A short reflection on how your upbringing can affect hobbies and career
-coverImage: /src/assets/images/old-books.jpg
+coverImage: /images/old-books.jpg
 ---
 
 # Generalist By Birth
