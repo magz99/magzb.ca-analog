@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   template: `<footer
     class="flex space-x-4 px-4 sm:px-5 lg:px-6 justify-between py-6"
   >
-    ©2024 Magz Bautista-Lee
+    ©2025 Magz Bautista-Lee
   </footer>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

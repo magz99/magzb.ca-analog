@@ -9,7 +9,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         <li class="flex items-center">
           <a href="/">Home</a>
         </li>
-        <!-- <a href="/blog">Blog</a> -->
+        <li class="flex items-center">
+          <a href="/blog">Blog</a>
+        </li>
         <li class="flex items-center">
           <a href="/about">About</a>
         </li>
