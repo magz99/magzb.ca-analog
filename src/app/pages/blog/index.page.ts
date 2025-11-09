@@ -27,6 +27,14 @@ import { RouterLink } from '@angular/router';
       .post__desc {
         margin: 0;
       }
+
+      .post__title {
+        font-weight: 600;
+      }
+
+      .post__desc {
+        font-style: italic;
+      }
     `,
     ]
 })
