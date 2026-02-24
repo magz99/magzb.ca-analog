@@ -16,8 +16,8 @@
     "preview": "node dist/analog/server/index.mjs"
   },
   "dependencies": {
-    "@analogjs/content": "^1.19.4",
-    "@analogjs/router": "^1.19.4",
+    "@analogjs/content": "^2.2.3",
+    "@analogjs/router": "^2.2.3",
     "@angular/animations": "^20.1.6",
     "@angular/build": "^20.1.5",
     "@angular/cdk": "^20.1.5",
@@ -43,9 +43,9 @@
     "zone.js": "~0.15.1"
   },
   "devDependencies": {
-    "@analogjs/platform": "^1.19.4",
-    "@analogjs/vite-plugin-angular": "^1.19.4",
-    "@analogjs/vitest-angular": "^1.19.4",
+    "@analogjs/platform": "^2.2.3",
+    "@analogjs/vite-plugin-angular": "^2.2.3",
+    "@analogjs/vitest-angular": "^2.2.3",
     "@angular/cli": "^20.1.5",
     "@angular/compiler-cli": "^20.1.6",
     "@types/jest": "^29.5.13",
