@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => ({
         highlighter: 'shiki',
       },
       prerender: {
-        routes: ['/blog', '/blog/generalist-by-birth'],
+        routes: ['/blog', '/blog/generalist-by-birth', '/about', '/resume'],
       },
     }),
   ],
