@@ -1,91 +1,146 @@
 ---
-title: Setting Up Claude Code with a Local LLM
+title: Setting Up Claude Code with a Local LLM (free)
 slug: 2026-05-08-setting-up-claude-code-with-local-llm
-description: A comprehensive guide to configuring Claude Code to work with local language models
+description: A guide on how to set up an LLM on your machine and connecting it to your Claude Code harness and executing tasks in your CLI for free
 coverImage: /images/old-books.jpg
 ---
 
-# Setting Up Claude Code with a Local LLM
+# Setting Up Claude Code with a Local LLM (free)
 
-In this article, I'll walk you through the process of configuring Claude Code to work with local language models. This setup allows you to leverage the power of local AI models while maintaining the convenience of Claude's interface.
+This is a short article on how to set up an LLM on your machine and connecting it to your Claude Code harness and executing tasks in your CLI for free. I had no prior knowledge on how to do this, and relied heavily on other articles online but that had mixed information.
 
-## Why Use Local LLMs?
+My personal setup is an M4 Pro Macbook with 48GB of memory. Based on Google searches, I should be able to run the Qwen2.5-Coder-32B or Qwen3.5-9B. What I ended up running was a version of qwen3-coder:30b.
 
-Using local language models offers several advantages:
-- **Privacy**: Your data stays on your machine
-- **Performance**: No network latency
-- **Cost**: No API usage fees
-- **Control**: Full control over the model and its behavior
+<br><br>
 
-## Prerequisites
+## What should I install?
 
-Before we begin, ensure you have:
-- Claude Code installed
-- A local LLM server running (such as Ollama, LM Studio, or LocalAI)
-- Basic understanding of command-line tools
+I initially installed several things: OpenClaw, Ollama and LMStudio. I ended up keeping only Ollama because it performed the fastest for me.
 
-## Step 1: Install Required Tools
+Ollama seems to be like a server to run your LLMs (Large language models). You can either run them online in the cloud (which I believe you need to pay for) or you can download them locally on your machine and run them for free. 
 
-First, make sure you have the necessary tools installed:
+Follow the installation instructions on [ollama.com](http://ollama.com) and you'll have the CLI available to you in your terminal. 
+
+<br><br>
+
+## Which LLM do I download?
+
+It's important to do a bit of research on which model you want to try out: you may want to focus on video/audio creation/manipulation or chatting or coding. I was looking for a coding-specific LLM so I settled on qwen (checkout out [qwen.ai](http://qwen.ai) for more information). 
+
+The size of the LLM is important too. Have a look at the numbers in the LLM's name: 'qwen3-ccoder:30b' or 'gemma4:26b' for example. The "<number>b" generally means the number of billions of parameters the LLM was trained with. Sometimes the larger the number means you need more powerful hardware to run it.
+
+Since I went with qwen3-coder:30b, and confirming with an online search, I should be able to run this on my laptop.
+
+<br><br>
+
+![Memory usage when the model is running](/images/claudesetup-step1.png)
+
+Memory usage when the model is running
+
+<br><br>
+
+## Using Ollama to Pull the LLM
+
+Now that you've decided on the LLM to pull down, if it's listed in the Ollama website, you should be able to pull it.
+
+In the command line, you would do this:
 
 ```
-# Install Ollama (if using Ollama)
-curl -fsSL https://ollama.com/install.sh | sh
+// ollama pull <model name>
 
-# Install Claude Code CLI
-npm install -g @anthropic/claude-code
+ollama pull qwen3-coder:30b
 ```
 
-![Installing Ollama and Claude Code CLI](/images/claudesetup-step1.png)
+That will download the model to your machine. The one above is about 18Gb so keep that in mind as you're trying out different models.
 
-## Step 2: Start Your Local LLM
+<br><br>
 
-Start your local LLM server. For example, with Ollama:
+Now you can list the models to ensure that Ollama pulled it:
 
 ```
-ollama run llama3
+// ollama list
+NAME                       ID              SIZE      MODIFIED   
+qwen3-coder:30b            3d92bf9a9a66    18 GB     4 days ago    
+qwen2.5-coder:7b           dae161e27b0e    4.7 GB    4 days ago
 ```
 
-![Starting Local LLM Server](/images/claudesetup-step2.png)
+<br><br>
 
-## Step 3: Configure Claude Code
+## Creating Your Configured Model
 
-Now, configure Claude Code to use your local LLM:
+This isn't a necessary step if your desired configuration is simple, but I went ahead and created a Modelfile with the following content:
 
-1. Open Claude Code
-2. Go to Settings → Models
-3. Add a new model configuration:
-   - Name: `local-llama3`
-   - Provider: `Local`
-   - Model: `llama3`
-   - Endpoint: `http://localhost:11434`
+```
+FROM qwen3-coder:30b
+PARAMETER num_ctx 65536
+```
 
-![Configuring Claude Code with Local LLM](/images/claudesetup-step3.png)
+The `num_ctx` is recommended to be set at 65536 when running this model with Claude Code.
 
-## Step 4: Test the Configuration
+<br><br>
 
-To verify everything is working:
+So I then ran this command to generate a configured version of the LLM:
 
-1. Open a new chat in Claude Code
-2. Select your local model
-3. Ask a simple question like "What is 2+2?"
+```
+ollama create -f Modelfile my-model
+```
 
-## Troubleshooting
+You can run `ollama list` again to make sure it go created. This is the model I will be referring to when launching claude with ollama.
 
-### Common Issues
+<br><br>
 
-- **Connection refused**: Make sure your local LLM server is running
-- **Model not found**: Verify the model name matches exactly
-- **Slow responses**: Check your system resources
+```
+// ollama list
+NAME                       ID              SIZE      MODIFIED   
+my-model:latest           3d92bf9a9a66    18 GB     3 seconds ago    
+qwen3-coder:30b           06c1097efce0    18 GB     4 days ago
+```
 
-### Configuration Tips
+<br><br>
 
-- For Ollama, ensure the port matches your setup (`11434` by default)
-- Use consistent model names across tools
-- Consider using `.env` files for sensitive configurations
+## Claude Code Environment Setup
 
-## Conclusion
+Before launching Claude Code via Ollama, there are a few environment variables to set:
 
-Setting up Claude Code with local LLMs is a powerful way to get the best of both worlds: Claude's interface and the privacy/performance benefits of local models. This setup is particularly useful for developers who want to experiment with AI without relying on cloud services.
+```
+export ANTHROPIC_DEFAULT_HAIKU_MODEL="my-model:latest"
+export ANTHROPIC_DEFAULT_SONNET_MODEL="my-model:latest"
+export ANTHROPIC_DEFAULT_OPUS_MODEL="my-model:latest"
 
-Happy coding!
+export ANTHROPIC_API_KEY=""
+export ANTHROPIC_AUTH_TOKEN=ollama
+export ANTHROPIC_BASE_URL=http://127.0.0.1:1234
+export DISABLE_TELEMETRY=1
+```
+
+You can set those in the terminal window you plan to run your Claude Code CLI.
+
+Thanks to https://www.rushis.com/fixing-the-model-may-not-exist-error-when-using-ollama-with-claude-code/ which was instrumental in getting this to work for me.
+
+<br><br>
+
+## Launching your Setup
+
+Now for the fun part: you're ready to launch Claude Code. Run this in the same terminal:
+
+`ollama launch claude --model my-model:latest` 
+
+You should see the Claude code harness with `my-model` displayed as the one in use.
+
+<br><br>
+
+![Screenshot 2026-05-08 at 07.10.24.png](/images/claudesetup-step2.png)
+
+Note: you may have to toggle the `/effort` to any value but `max`  (I noticed an issue with the effort parameter when testing this on LMStudio)
+
+<br><br>
+
+Ask it a question to make sure everything works:
+
+<br><br>
+
+![Screenshot 2026-05-08 at 07.12.44.png](/images/claudesetup-step3.png)
+
+<br><br>
+
+And there you go! Your locally run model ready to work for you for free 🎉
