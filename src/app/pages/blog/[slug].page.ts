@@ -9,8 +9,8 @@ import PostAttributes from '../../post-attributes';
     imports: [AsyncPipe, MarkdownComponent],
     template: `
     @if (post$ | async; as post) {
-    <article>
-      <img class="post__image" [src]="post.attributes.coverImage" />
+    <article class="prose max-w-none">
+      <img class="post__image w-full h-auto mb-8" [src]="post.attributes.coverImage" />
       <analog-markdown [content]="post.content" />
     </article>
     }
