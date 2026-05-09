@@ -28,7 +28,7 @@ Before we begin, ensure you have:
 
 First, make sure you have the necessary tools installed:
 
-```sh
+```
 # Install Ollama (if using Ollama)
 curl -fsSL https://ollama.com/install.sh | sh
 
@@ -42,7 +42,7 @@ npm install -g @anthropic/claude-code
 
 Start your local LLM server. For example, with Ollama:
 
-```sh
+```
 ollama run llama3
 ```
 
