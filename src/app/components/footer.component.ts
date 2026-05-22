@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-footer',
   standalone: true,
   template: `<footer
-    class="flex space-x-4 px-4 sm:px-5 lg:px-6 justify-between py-6"
+    class="flex space-x-4 px-4 sm:px-5 lg:px-6 justify-between py-6 border-t border-dashed border-[#3a8a55] text-[#7cf3a0]"
   >
     ©2025 Magz Bautista-Lee
   </footer>`,

@@ -8,9 +8,9 @@ import { FooterComponent } from './components/footer.component';
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   template: `
-    <main class="mat-app-background light-theme">
+    <main class="mat-app-background light-theme min-h-screen">
       <app-header class="w-full mx-auto max-w-screen-xl" />
-      <div class="w-full mx-auto min-h-screen max-w-screen-xl p-10 my-0 ">
+      <div class="w-full mx-auto min-h-screen max-w-screen-xl p-4 my-0">
         <router-outlet></router-outlet>
       </div>
       <app-footer />
