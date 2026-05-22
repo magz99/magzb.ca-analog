@@ -167,13 +167,19 @@ li {
 
 /* General terminal styling */
 pre {
+
+  &:not(.font-none) {
+    font-family: 'VT323', 'Share Tech Mono', monospace;
+  }
   background-color: rgba(0, 0, 0, 0.3);
   border: 1px dashed var(--crt-dim);
   padding: 1rem;
   overflow: auto;
   margin: 1rem 0;
-  font-family: 'VT323', 'Share Tech Mono', monospace;
+  
   font-size: 1rem;
+
+
 }
 
 code {
@@ -259,6 +265,37 @@ code {
 @keyframes blink {
   0%, 49% { opacity: 1; }
   50%, 100% { opacity: 0; }
+}
+
+/* Active link styling */
+.router-link-active {
+  color: var(--crt-accent) !important;
+  font-weight: bold !important;
+}
+
+/* Boot screen styling */
+.boot-screen {
+  background-color: var(--crt-bg);
+  color: var(--crt-fg);
+  font-family: 'VT323', 'Share Tech Mono', monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.boot-content {
+  text-align: center;
+  margin: 2rem;
+}
+
+.boot-lines {
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.boot-lines div {
+  margin: 0.2rem 0;
 }
 
 /* Responsive adjustments */
