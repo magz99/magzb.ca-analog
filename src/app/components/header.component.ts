@@ -4,19 +4,19 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-header',
   standalone: true,
   template: `
-    <nav class="flex sm:px-5 lg:px-6 justify-between py-6">
-      <ul class="flex">
+    <nav class="flex sm:px-5 lg:px-6 justify-between py-6 border-b border-dashed border-[#3a8a55]">
+      <ul class="flex flex-col sm:flex-row gap-2 sm:gap-4">
         <li class="flex items-center">
-          <a href="/">Home</a>
+          <a href="/" class="text-[#7cf3a0] hover:text-[#c8ffd9]">Home</a>
         </li>
         <li class="flex items-center">
-          <a href="/blog">Blog</a>
+          <a href="/blog" class="text-[#7cf3a0] hover:text-[#c8ffd9]">Blog</a>
         </li>
         <li class="flex items-center">
-          <a href="/about">About</a>
+          <a href="/about" class="text-[#7cf3a0] hover:text-[#c8ffd9]">About</a>
         </li>
         <li class="flex items-center">
-          <a href="/resume">Resume</a>
+          <a href="/resume" class="text-[#7cf3a0] hover:text-[#c8ffd9]">Resume</a>
         </li>
       </ul>
 

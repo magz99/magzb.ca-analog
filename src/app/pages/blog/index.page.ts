@@ -7,13 +7,15 @@ import { RouterLink } from '@angular/router';
     selector: 'app-blog',
     imports: [RouterLink],
     template: `
-    <h1>Blog Archive</h1>
-    @for (post of posts;track post.attributes.slug) {
-    <a [routerLink]="['/blog/', post.attributes.slug]">
-      <h2 class="post__title">{{ post.attributes.title }}</h2>
-      <p class="post__desc">{{ post.attributes.description }}</p>
-    </a>
-    }
+    <div class="border-terminal">
+      <h1 class="text-[#c8ffd9] text-2xl mb-4">Blog Archive</h1>
+      @for (post of posts;track post.attributes.slug) {
+      <a [routerLink]="['/blog/', post.attributes.slug]" class="text-[#7cf3a0] hover:text-[#c8ffd9]">
+        <h2 class="post__title text-[#7cf3a0] font-bold text-xl mb-2">{{ post.attributes.title }}</h2>
+        <p class="post__desc text-[#3a8a55] italic mb-4">{{ post.attributes.description }}</p>
+      </a>
+      }
+    </div>
   `,
     styles: [
         `
