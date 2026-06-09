@@ -2,7 +2,6 @@
 title: T1213 - Request to Reduce Tax Deductions at Source
 slug: 2026-06-08-T1213-tax-reduction-guide
 description: A comprehensive guide on applying for the CRA T1213 form to reduce income tax withholding at source and redirect funds into RRSP, employment expenses, or charitable donations.
-coverImage: /images/image.png
 ---
 
 # T1213: How to apply for the income tax reduction at source
