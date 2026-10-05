@@ -39,7 +39,7 @@ import { Component } from '@angular/core';
   `,
   styles: [
     `
-      .boot-screen {
+      .boot-content {
         animation: fadeIn 1s ease-in;
       }
 
